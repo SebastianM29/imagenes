@@ -42,7 +42,7 @@ const ui =new UI();
 
         const libro = new Libro(title,author,isbn)
 
-         if (title == '' || author == '' || isbn =='') {
+         if (libro.title == '' || libro.author == '' || libro.isbn =='') {
           console.log('corregir errores')
           ui.RenderMessage('Ingrese todos los datos necesarios','danger', 1000);
           e.preventDefault();

@@ -6,13 +6,13 @@ const modeloLibro = require('../models/modeloLibro');
 const fs = require('fs-extra');
 const path = require('path');
 
-const Libros = require ('../models/modeloLibro')
+//const Libros = require ('../models/modeloLibro')
 
 
 
 
 
-const usuariosGet = async( req , res=response)=> {
+const usuariosGet = async( req=request , res=response)=> {
 
   const libros = await modeloLibro.find()
    res.json(
@@ -22,21 +22,28 @@ const usuariosGet = async( req , res=response)=> {
 
   const usuariosPost = async( req=request , res=response)=> {
     try {
-      const {title,author,isbn} = req.body
+      const {title,author,isbn} = req.body;
+
+
       if(!title || !author || !isbn)
       return res.status(400).json({message: "Ingrese todos los datos"});
 
-      const newLibro = new Libro ({title,author,isbn});
+      const newLibro = new modeloLibro ({title,author,isbn});
 
       if (req.file) {
         newLibro.imagepath = "/uploads/" + req.file.filename;
       }
       
       const savedLibro = await newLibro.save();
-      res.json(savedLibro)
+      
+      
+      res.json({
+        msg : 'libro guardado'
+        
+      });
 
     } catch (error) {
-      return res.status(500).json({message: error.message})
+      return res.status(400).json({message: error.message})
       
     }
     

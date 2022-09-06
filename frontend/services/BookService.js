@@ -27,6 +27,7 @@ class BookService {
 
              // convertimos la respuesta a  un formato json;
              const data = await response.json()
+             return data;
              
             }
     

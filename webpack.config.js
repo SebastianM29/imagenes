@@ -11,7 +11,7 @@ console.log(devMode)
 //convierte el codigo frontend a codigo standar de html css javascript
 // y mueve a otra carpeta ... primero se especifica donde esta el arhivo origen
 module.exports = {
-    mode: 'production',
+    mode: 'development',
     //entra al archivo frontend y toma el archivo app.js
     entry : './frontend/app.js',
     //donde lo aloja

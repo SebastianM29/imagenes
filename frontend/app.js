@@ -1,4 +1,5 @@
 import './styles/app.css';
+import  Libro  from './models/libro'
 
 
 import UI from './UI';
@@ -32,12 +33,26 @@ const ui =new UI();
          formData.append('title',title);
          formData.append('author',author);
          formData.append('isbn',isbn);
+         
+         
+         for (var pair of formData.entries()) {
+          console.log(pair[0] + ", " + pair[1]);
+        }
 
+
+        const libro = new Libro(title,author,isbn)
+
+         if (title == '' || author == '' || isbn =='') {
+          console.log('corregir errores')
+          ui.RenderMessage('Ingrese todos los datos necesarios','danger', 1000);
+          e.preventDefault();
+        } else {
 
         ui.addAnewBooks(formData)
         ui.RenderMessage('contenido cargado','success',1500)
         //cancela el evento para que nop se reinicie en consola
         e.preventDefault();
+        }
     })
        //captura el id book-cards del DOM
     document.getElementById('books-cards')

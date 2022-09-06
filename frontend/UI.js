@@ -28,7 +28,7 @@ class UI {
      <div class="row">
         
         <div class="col-md-4">
-         <img src="${book.imagepath}" alt="" class="img-fluid"/>
+         <img src="http://localhost:8060${book.imagepath}" alt="" class="img-fluid"/>
         </div>
         
         <div class="col-md-8">

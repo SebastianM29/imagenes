@@ -5,7 +5,7 @@ class BookService {
 
 
     constructor(){
-        this.URI = '/libros'
+        this.URI = 'http://localhost:8060/libros'
     }
     
     async getBooks(){
@@ -27,7 +27,7 @@ class BookService {
 
              // convertimos la respuesta a  un formato json;
              const data = await response.json()
-             console.log(data)
+             
             }
     
        

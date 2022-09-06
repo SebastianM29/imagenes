@@ -21,20 +21,26 @@ const usuariosGet = async( req , res=response)=> {
   }
 
   const usuariosPost = async( req=request , res=response)=> {
-    const {title,author,isbn} = req.body
-    console.log(req.file)
-    const imagepath = '/uploads/' + req.file.filename
-    const libros = new Libros({title,author,isbn,imagepath});
-    //para grabar en la base de datos ... sino solamente se va a ver en consola
-    await libros.save();
-   
-    res.json({
-          
-        msg:'libro guardado',
-        libros
+    try {
+      const {title,author,isbn} = req.body
+      if(!title || !author || !isbn)
+      return res.status(400).json({message: "Ingrese todos los datos"});
+
+      const newLibro = new Libro ({title,author,isbn});
+
+      if (req.file) {
+        newLibro.imagepath = "/uploads/" + req.file.filename;
+      }
       
-     
-    });
+      const savedLibro = await newLibro.save();
+      res.json(savedLibro)
+
+    } catch (error) {
+      return res.status(500).json({message: error.message})
+      
+    }
+    
+    
   }
 
   const usuariosDelete = async(req=request, res=response)=> {

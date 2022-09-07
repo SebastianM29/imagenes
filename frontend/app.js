@@ -51,8 +51,9 @@ const ui =new UI();
         ui.addAnewBooks(formData)
         ui.RenderMessage('contenido cargado','success',1500)
         //cancela el evento para que nop se reinicie en consola
-        e.preventDefault();
+        
         }
+        e.preventDefault();
     })
        //captura el id book-cards del DOM
     document.getElementById('books-cards')

@@ -28,7 +28,7 @@ const usuariosGet = async( req=request , res=response)=> {
       if(!title || !author || !isbn)
       return res.status(400).json({message: "Ingrese todos los datos"});
 
-      const newLibro = new modeloLibro ({title,author,isbn});
+      const newLibro = await new modeloLibro ({title,author,isbn});
 
       if (req.file) {
         newLibro.imagepath = "/uploads/" + req.file.filename;
@@ -38,7 +38,8 @@ const usuariosGet = async( req=request , res=response)=> {
       
       
       res.json({
-        msg : 'libro guardado'
+
+        message : 'libro guardado'
         
       });
 
